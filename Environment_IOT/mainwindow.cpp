@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,9 +39,24 @@ void MainWindow::on_landing_Button_clicked()
     QString password = ui->password_Edit->text();
 
     QSqlQuery query;
-    bool success = query.exec("select user from user_password where user ="+user+",password = "+password+";");
+    query.exec(QString("select user from user_password where user = '%1' and password = '%2' ;").arg(user,password));
     query.next();
-    qDebug()<<query.value(0).toString();
+    QString use = query.value(0).toString();
 
+    if(user != use)
+    {
+        QMessageBox::critical(NULL, "Warning", "密码错误，请重新输入密码！", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    }
+
+
+}
+
+void MainWindow::on_cancel_Button_clicked()
+{
+    close();
+}
+
+void MainWindow::on_forget_Button_clicked()
+{
 
 }

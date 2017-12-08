@@ -22,6 +22,10 @@ public:
 private slots:
     void on_landing_Button_clicked();
 
+    void on_cancel_Button_clicked();
+
+    void on_forget_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
