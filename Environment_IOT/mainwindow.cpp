@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "register.h"
+#include "forgetpassword.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -44,7 +45,7 @@ void MainWindow::on_cancel_Button_clicked()
 }
 
 
-//修改密码registerUI界面
+//修改密码UI界面
 void MainWindow::on_forget_Button_clicked()
 {
     this->close();
@@ -52,7 +53,11 @@ void MainWindow::on_forget_Button_clicked()
     changePassword->show();
 }
 
+//注册账户UI界面
 void MainWindow::on_pushButton_clicked()
 {
+    this->close();
+    ForgetPassword *forgetPassword = new ForgetPassword();
+    forgetPassword->show();
 
 }

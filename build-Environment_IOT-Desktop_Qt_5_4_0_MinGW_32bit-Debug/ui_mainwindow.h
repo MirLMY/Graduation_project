@@ -31,11 +31,11 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *landing_Button;
     QPushButton *cancel_Button;
-    QWidget *widget1;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout_3;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout;
@@ -44,7 +44,9 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLineEdit *user_Edit;
     QLineEdit *password_Edit;
+    QVBoxLayout *verticalLayout_3;
     QPushButton *forget_Button;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -56,28 +58,28 @@ public:
         MainWindow->resize(733, 456);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(380, 280, 158, 25));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(520, 340, 158, 25));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        landing_Button = new QPushButton(widget);
+        landing_Button = new QPushButton(layoutWidget);
         landing_Button->setObjectName(QStringLiteral("landing_Button"));
 
         horizontalLayout->addWidget(landing_Button);
 
-        cancel_Button = new QPushButton(widget);
+        cancel_Button = new QPushButton(layoutWidget);
         cancel_Button->setObjectName(QStringLiteral("cancel_Button"));
 
         horizontalLayout->addWidget(cancel_Button);
 
-        widget1 = new QWidget(centralWidget);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(250, 130, 264, 52));
-        horizontalLayout_3 = new QHBoxLayout(widget1);
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(230, 150, 311, 101));
+        horizontalLayout_3 = new QHBoxLayout(widget);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
@@ -88,12 +90,12 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        user = new QLabel(widget1);
+        user = new QLabel(widget);
         user->setObjectName(QStringLiteral("user"));
 
         verticalLayout->addWidget(user);
 
-        password = new QLabel(widget1);
+        password = new QLabel(widget);
         password->setObjectName(QStringLiteral("password"));
 
         verticalLayout->addWidget(password);
@@ -104,12 +106,12 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        user_Edit = new QLineEdit(widget1);
+        user_Edit = new QLineEdit(widget);
         user_Edit->setObjectName(QStringLiteral("user_Edit"));
 
         verticalLayout_2->addWidget(user_Edit);
 
-        password_Edit = new QLineEdit(widget1);
+        password_Edit = new QLineEdit(widget);
         password_Edit->setObjectName(QStringLiteral("password_Edit"));
 
         verticalLayout_2->addWidget(password_Edit);
@@ -120,10 +122,22 @@ public:
 
         horizontalLayout_3->addLayout(horizontalLayout_2);
 
-        forget_Button = new QPushButton(widget1);
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        forget_Button = new QPushButton(widget);
         forget_Button->setObjectName(QStringLiteral("forget_Button"));
+        forget_Button->setLayoutDirection(Qt::RightToLeft);
 
-        horizontalLayout_3->addWidget(forget_Button);
+        verticalLayout_3->addWidget(forget_Button);
+
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        verticalLayout_3->addWidget(pushButton);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_3);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -150,6 +164,7 @@ public:
         user->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215", 0));
         password->setText(QApplication::translate("MainWindow", "\345\257\206\347\240\201", 0));
         forget_Button->setText(QApplication::translate("MainWindow", "\345\277\230\350\256\260\345\257\206\347\240\201\357\274\237", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "\346\263\250\345\206\214", 0));
     } // retranslateUi
 
 };

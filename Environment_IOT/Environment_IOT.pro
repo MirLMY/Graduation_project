@@ -15,10 +15,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    register.cpp
+    register.cpp \
+    forgetpassword.cpp
 
 HEADERS  += mainwindow.h \
-    register.h
+    register.h \
+    forgetpassword.h
 
 FORMS    += mainwindow.ui \
-    register.ui
+    register.ui \
+    forgetpassword.ui

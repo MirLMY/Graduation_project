@@ -26,31 +26,62 @@ void Register::on_pushButton_clicked()
 
     //查询老密码和用户是否匹配，然后修改密码，再查询新密码是否修改成功
     QSqlQuery query;
-    query.exec(QString("select user from user_password where user = '%1' and password = '%2' ;").arg(user,oldPassword));
+
+    query.exec(QString("select user from user_password where user = '%1';").arg(user));
     query.next();
-    if(query.value(0).toString() == user)
+    QString checkUser = query.value(0).toString();
+    if (checkUser == NULL)
     {
-        qDebug()<<"dd";
-        query.exec(QString("update user_password set password = '%1' where user = '%2';").arg(newPassword, user));
-
-        query.exec(QString("select user from user_password where user = '%1' and password = '%2' ;").arg(user,newPassword));
+        QMessageBox msgBox;
+        msgBox.setText("没有此用户");
+        msgBox.exec();
+    }
+    else
+    {
+        query.exec(QString("select password from user_password where user = '%1';").arg(user));//查询user的密码，然后与输入密码比较
         query.next();
-        QString use = query.value(0).toString();
-
-        if(user != use)
+        if(query.value(0).toString() == oldPassword)
         {
-            QMessageBox::critical(NULL, "Warning", "密码修改错误，请重新再试！", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+
+            query.exec(QString("update user_password set password = '%1' where user = '%2';").arg(newPassword, user));//修改密码
+
+            query.exec(QString("select password from user_password where user = '%1' ;").arg(user));
+            query.next();
+
+            QString password = query.value(0).toString();
+
+            if(password == newPassword)
+            {
+                //关闭修改密码界面，并且打开登陆界面
+                this->close();
+                QMessageBox msgBox;
+                msgBox.setText("密码修改成功");
+                msgBox.exec();
+                MainWindow *mainwidow = new MainWindow();
+                mainwidow->show();
+            }
+            else
+            {
+                QMessageBox msgBox;
+                msgBox.setText("密码修改不成功，请重新再试");
+                msgBox.exec();
+
+            }
         }
         else
         {
-            //关闭修改密码界面，并且打开登陆界面
-            this->close();
             QMessageBox msgBox;
-            msgBox.setText("密码修改成功");
+            msgBox.setText("旧密码错误，请重新输入");
             msgBox.exec();
-            MainWindow *mainwidow = new MainWindow();
-            mainwidow->show();
-
         }
     }
+
+
+}
+
+void Register::on_pushButton_2_clicked()
+{
+    this->close();
+    MainWindow *mainwidow = new MainWindow();
+    mainwidow->show();
 }

@@ -24,8 +24,6 @@ private slots:
 
     void on_cancel_Button_clicked();
 
-
-
     void on_forget_Button_clicked();
 
     void on_pushButton_clicked();
