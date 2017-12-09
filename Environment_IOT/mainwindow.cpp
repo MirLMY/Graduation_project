@@ -2,28 +2,15 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QMessageBox>
+#include "register.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
      ui->setupUi(this);
-    //打开数据库
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setDatabaseName("test");
-    db.setUserName("root");
-    db.setPassword("123456");
-    if(!db.open())
-    {
-        QErrorMessage msg(this);
-        msg.setWindowTitle(tr("error"));
-        msg.showMessage(tr("服务器连接错误,请重启服务器"));
-        msg.exec();
-    }
 
     ui->password_Edit->setEchoMode(QLineEdit::Password);
-
-
 
 }
 
@@ -56,7 +43,16 @@ void MainWindow::on_cancel_Button_clicked()
     close();
 }
 
+
+//修改密码registerUI界面
 void MainWindow::on_forget_Button_clicked()
+{
+    this->close();
+    Register *changePassword = new Register();
+    changePassword->show();
+}
+
+void MainWindow::on_pushButton_clicked()
 {
 
 }

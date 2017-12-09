@@ -14,11 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>280</y>
+      <x>520</x>
+      <y>340</y>
       <width>158</width>
       <height>25</height>
      </rect>
@@ -43,10 +43,10 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>130</y>
-      <width>264</width>
-      <height>52</height>
+      <x>230</x>
+      <y>150</y>
+      <width>311</width>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -83,11 +83,25 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="forget_Button">
-       <property name="text">
-        <string>忘记密码？</string>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QPushButton" name="forget_Button">
+         <property name="layoutDirection">
+          <enum>Qt::RightToLeft</enum>
+         </property>
+         <property name="text">
+          <string>忘记密码？</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>注册</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
