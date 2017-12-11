@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QErrorMessage>
+#include "showmainwindow.h"
 
 int main(int argc, char *argv[])
 {

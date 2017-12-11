@@ -25,7 +25,14 @@ void ForgetPassword::on_push_Button_clicked()
     QSqlQuery query ;
     query.exec(QString("select user from user_password where user = '%1'").arg(newUser));
     query.next();
-    if(query.value(0).toString() == NULL)
+
+    if(newUser.isEmpty() || firstPassword.isEmpty() || twicePassword.isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setText("不能为空");
+        msgBox.exec();
+    }
+    else if(query.value(0).toString().isEmpty())
     {
         if(firstPassword == twicePassword)
         {

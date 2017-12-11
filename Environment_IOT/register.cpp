@@ -30,7 +30,13 @@ void Register::on_pushButton_clicked()
     query.exec(QString("select user from user_password where user = '%1';").arg(user));
     query.next();
     QString checkUser = query.value(0).toString();
-    if (checkUser == NULL)
+    if(user.isEmpty() || oldPassword.isEmpty() || newPassword.isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setText("不能为空");
+        msgBox.exec();
+    }
+    else if (checkUser.isEmpty())
     {
         QMessageBox msgBox;
         msgBox.setText("没有此用户");

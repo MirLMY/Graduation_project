@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->password_Edit->setEchoMode(QLineEdit::Password);
 
+
 }
 
 MainWindow::~MainWindow()
@@ -20,6 +21,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//登陆按钮
 void MainWindow::on_landing_Button_clicked()
 {
     //获取用户密码和用户账户

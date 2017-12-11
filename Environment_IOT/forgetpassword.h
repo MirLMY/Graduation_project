@@ -5,6 +5,7 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include "mainwindow.h"
 
 namespace Ui {
 class ForgetPassword;
