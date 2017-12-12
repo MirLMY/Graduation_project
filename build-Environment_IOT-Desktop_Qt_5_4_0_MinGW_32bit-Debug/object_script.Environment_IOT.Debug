@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\register.o
+./debug\forgetpassword.o
+./debug\showmainwindow.o
+./debug\comform.o
+./debug\moc_mainwindow.o
+./debug\moc_register.o
+./debug\moc_forgetpassword.o
+./debug\moc_showmainwindow.o
+./debug\moc_comform.o
+);

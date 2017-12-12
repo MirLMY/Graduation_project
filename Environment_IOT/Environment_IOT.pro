@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += sql
+QT       += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,14 +18,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     register.cpp \
     forgetpassword.cpp \
-    showmainwindow.cpp
+    showmainwindow.cpp \
+    comform.cpp
 
 HEADERS  += mainwindow.h \
     register.h \
     forgetpassword.h \
-    showmainwindow.h
+    showmainwindow.h \
+    comform.h
 
 FORMS    += mainwindow.ui \
     register.ui \
     forgetpassword.ui \
-    showmainwindow.ui
+    showmainwindow.ui \
+    comform.ui

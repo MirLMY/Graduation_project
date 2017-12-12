@@ -183,6 +183,7 @@ Makefile: ../Environment_IOT/Environment_IOT.pro F:/IDE/QT/5.4/mingw491_32/mkspe
 		F:/IDE/QT/5.4/mingw491_32/lib/Qt5Widgets.prl \
 		F:/IDE/QT/5.4/mingw491_32/lib/Qt5Gui.prl \
 		F:/IDE/QT/5.4/mingw491_32/lib/Qt5Sql.prl \
+		F:/IDE/QT/5.4/mingw491_32/lib/Qt5SerialPort.prl \
 		F:/IDE/QT/5.4/mingw491_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile ..\Environment_IOT\Environment_IOT.pro
 F:\IDE\QT\5.4\mingw491_32\mkspecs\features\spec_pre.prf:
@@ -309,6 +310,7 @@ F:/IDE/QT/5.4/mingw491_32/lib/Qt5Cored.prl:
 F:/IDE/QT/5.4/mingw491_32/lib/Qt5Widgets.prl:
 F:/IDE/QT/5.4/mingw491_32/lib/Qt5Gui.prl:
 F:/IDE/QT/5.4/mingw491_32/lib/Qt5Sql.prl:
+F:/IDE/QT/5.4/mingw491_32/lib/Qt5SerialPort.prl:
 F:/IDE/QT/5.4/mingw491_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile ..\Environment_IOT\Environment_IOT.pro

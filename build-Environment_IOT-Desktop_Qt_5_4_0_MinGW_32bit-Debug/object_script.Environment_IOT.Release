@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\register.o
+./release\forgetpassword.o
+./release\showmainwindow.o
+./release\comform.o
+./release\moc_mainwindow.o
+./release\moc_register.o
+./release\moc_forgetpassword.o
+./release\moc_showmainwindow.o
+./release\moc_comform.o
+);
