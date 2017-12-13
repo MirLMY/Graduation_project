@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QSerialPort>
+#include <QSerialPortInfo>
 
 namespace Ui {
 class comForm;
@@ -15,13 +16,15 @@ class comForm : public QWidget
 public:
     explicit comForm(QWidget *parent = 0);
     ~comForm();
+    QSerialPort *my_serialport = new QSerialPort();
 
 private slots:
     void on_openClose_Button_clicked();
 
 private:
     Ui::comForm *ui;
-    QSerialPort *my_serialport = new QSerialPort();
+
+
 
 };
 

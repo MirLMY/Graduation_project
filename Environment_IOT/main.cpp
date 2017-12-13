@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QErrorMessage>
-#include "comform.h"
+#include "showmainwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         msg->exec();
     }
 
-    comForm w;
+    ShowMainWindow w;
     w.show();
 
     return a.exec();
