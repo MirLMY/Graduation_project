@@ -35,7 +35,11 @@ void MainWindow::on_landing_Button_clicked()
 
     if(user != use)
     {
-        QMessageBox::critical(NULL, "Warning", "密码错误，请重新输入密码！", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+        //清除错误密码
+        //ui->user_Edit->setText(NULL);
+        ui->password->setText(NULL);
+
+        QMessageBox::critical(NULL, "Warning", "用户名不存在或者密码错误，请重新输入！", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     }
 
 
@@ -53,6 +57,7 @@ void MainWindow::on_forget_Button_clicked()
     this->close();
     Register *changePassword = new Register();
     changePassword->show();
+    //changePassword->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 //注册账户UI界面
@@ -61,5 +66,5 @@ void MainWindow::on_pushButton_clicked()
     this->close();
     ForgetPassword *forgetPassword = new ForgetPassword();
     forgetPassword->show();
-
+    forgetPassword->setAttribute(Qt::WA_DeleteOnClose);
 }

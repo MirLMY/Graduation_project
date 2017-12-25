@@ -5,6 +5,9 @@
 #include <QString>
 #include "comform.h"
 #include <QByteArray>
+#include <QString>
+
+#define IOT_SEND_HEAD 0x12
 
 namespace Ui {
 class ShowMainWindow;
@@ -28,6 +31,7 @@ private slots:
     void recv_serialport();
 
 
+    void on_sendButton_clicked();
 };
 
 #endif // SHOWMAINWINDOW_H

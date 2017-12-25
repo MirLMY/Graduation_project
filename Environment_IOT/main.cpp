@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         msg->exec();
     }
 
-    ShowMainWindow w;
+    MainWindow w;
     w.show();
 
     return a.exec();

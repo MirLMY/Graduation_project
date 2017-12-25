@@ -65,6 +65,7 @@ void Register::on_pushButton_clicked()
                 msgBox.exec();
                 MainWindow *mainwidow = new MainWindow();
                 mainwidow->show();
+                mainwidow->setAttribute(Qt::WA_DeleteOnClose);
             }
             else
             {
@@ -76,6 +77,8 @@ void Register::on_pushButton_clicked()
         }
         else
         {
+            ui->oldPasswordEdit->setText(NULL);
+
             QMessageBox msgBox;
             msgBox.setText("旧密码错误，请重新输入");
             msgBox.exec();
@@ -90,4 +93,5 @@ void Register::on_pushButton_2_clicked()
     this->close();
     MainWindow *mainwidow = new MainWindow();
     mainwidow->show();
+    mainwidow->setAttribute(Qt::WA_DeleteOnClose);
 }

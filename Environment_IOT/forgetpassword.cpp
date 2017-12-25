@@ -43,10 +43,15 @@ void ForgetPassword::on_push_Button_clicked()
 
             MainWindow *mainwidow = new MainWindow();
             mainwidow->show();
+            mainwidow->setAttribute(Qt::WA_DeleteOnClose);//当窗口关闭时，自动释放内存
             this->close();
         }
         else
         {
+            //删除edit上两次不同的密码
+            ui->firstPassword_Edit->setText(NULL);
+            ui->twicePassword_Edit->setText(NULL);
+
             QMessageBox msgBox;
             msgBox.setText("两次密码输入不一致");
             msgBox.exec();
@@ -55,6 +60,9 @@ void ForgetPassword::on_push_Button_clicked()
     }
     else
     {
+        //删除已存在的用户的edit
+        ui->user_Edit->setText(NULL);
+
         QMessageBox msgBox;
         msgBox.setText("次用户已存在，请重新输入");
         msgBox.exec();

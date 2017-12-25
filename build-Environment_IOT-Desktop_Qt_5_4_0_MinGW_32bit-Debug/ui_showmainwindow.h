@@ -16,6 +16,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
@@ -27,6 +28,7 @@ class Ui_ShowMainWindow
 public:
     QWidget *centralwidget;
     QTextBrowser *textBrowser;
+    QPushButton *sendButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -40,6 +42,9 @@ public:
         textBrowser = new QTextBrowser(centralwidget);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(200, 150, 256, 192));
+        sendButton = new QPushButton(centralwidget);
+        sendButton->setObjectName(QStringLiteral("sendButton"));
+        sendButton->setGeometry(QRect(460, 400, 75, 23));
         ShowMainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ShowMainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -57,6 +62,7 @@ public:
     void retranslateUi(QMainWindow *ShowMainWindow)
     {
         ShowMainWindow->setWindowTitle(QApplication::translate("ShowMainWindow", "MainWindow", 0));
+        sendButton->setText(QApplication::translate("ShowMainWindow", "\345\217\221\351\200\201", 0));
     } // retranslateUi
 
 };

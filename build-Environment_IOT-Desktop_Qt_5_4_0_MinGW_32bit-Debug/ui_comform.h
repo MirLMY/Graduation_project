@@ -27,7 +27,7 @@ class Ui_comForm
 {
 public:
     QPushButton *openClose_Button;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QLabel *com_label;
@@ -50,35 +50,35 @@ public:
         openClose_Button = new QPushButton(comForm);
         openClose_Button->setObjectName(QStringLiteral("openClose_Button"));
         openClose_Button->setGeometry(QRect(130, 210, 75, 23));
-        widget = new QWidget(comForm);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(100, 30, 135, 128));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(comForm);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(100, 30, 135, 128));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        com_label = new QLabel(widget);
+        com_label = new QLabel(layoutWidget);
         com_label->setObjectName(QStringLiteral("com_label"));
 
         verticalLayout->addWidget(com_label);
 
-        baud_label = new QLabel(widget);
+        baud_label = new QLabel(layoutWidget);
         baud_label->setObjectName(QStringLiteral("baud_label"));
 
         verticalLayout->addWidget(baud_label);
 
-        parity_label = new QLabel(widget);
+        parity_label = new QLabel(layoutWidget);
         parity_label->setObjectName(QStringLiteral("parity_label"));
 
         verticalLayout->addWidget(parity_label);
 
-        data_label = new QLabel(widget);
+        data_label = new QLabel(layoutWidget);
         data_label->setObjectName(QStringLiteral("data_label"));
 
         verticalLayout->addWidget(data_label);
 
-        stop_label = new QLabel(widget);
+        stop_label = new QLabel(layoutWidget);
         stop_label->setObjectName(QStringLiteral("stop_label"));
 
         verticalLayout->addWidget(stop_label);
@@ -88,27 +88,27 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        com_Box = new QComboBox(widget);
+        com_Box = new QComboBox(layoutWidget);
         com_Box->setObjectName(QStringLiteral("com_Box"));
 
         verticalLayout_2->addWidget(com_Box);
 
-        baud_Box = new QComboBox(widget);
+        baud_Box = new QComboBox(layoutWidget);
         baud_Box->setObjectName(QStringLiteral("baud_Box"));
 
         verticalLayout_2->addWidget(baud_Box);
 
-        parity_Box = new QComboBox(widget);
+        parity_Box = new QComboBox(layoutWidget);
         parity_Box->setObjectName(QStringLiteral("parity_Box"));
 
         verticalLayout_2->addWidget(parity_Box);
 
-        data_Box = new QComboBox(widget);
+        data_Box = new QComboBox(layoutWidget);
         data_Box->setObjectName(QStringLiteral("data_Box"));
 
         verticalLayout_2->addWidget(data_Box);
 
-        stop_Box = new QComboBox(widget);
+        stop_Box = new QComboBox(layoutWidget);
         stop_Box->setObjectName(QStringLiteral("stop_Box"));
 
         verticalLayout_2->addWidget(stop_Box);
@@ -116,16 +116,7 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_2);
 
-        stop_label->raise();
-        baud_label->raise();
-        com_label->raise();
-        data_label->raise();
-        parity_label->raise();
-        stop_Box->raise();
-        data_Box->raise();
-        baud_Box->raise();
-        com_Box->raise();
-        parity_Box->raise();
+        layoutWidget->raise();
         openClose_Button->raise();
 
         retranslateUi(comForm);
@@ -159,10 +150,10 @@ public:
         );
         data_Box->clear();
         data_Box->insertItems(0, QStringList()
-         << QApplication::translate("comForm", "5", 0)
-         << QApplication::translate("comForm", "6", 0)
-         << QApplication::translate("comForm", "7", 0)
          << QApplication::translate("comForm", "8", 0)
+         << QApplication::translate("comForm", "7", 0)
+         << QApplication::translate("comForm", "6", 0)
+         << QApplication::translate("comForm", "5", 0)
         );
         stop_Box->clear();
         stop_Box->insertItems(0, QStringList()

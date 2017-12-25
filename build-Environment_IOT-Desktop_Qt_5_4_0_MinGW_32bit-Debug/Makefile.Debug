@@ -587,6 +587,15 @@ debug/moc_showmainwindow.cpp: F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QMainW
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qtabwidget.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qicon.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QString \
+		../Environment_IOT/comform.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPort \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialport.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPortInfo \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray \
 		../Environment_IOT/showmainwindow.h
 	F:\IDE\QT\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/IDE/QT/5.4/mingw491_32/mkspecs/win32-g++ -IC:/Users/Administrator/OneDrive/Graduation_project/Environment_IOT -IF:/IDE/QT/5.4/mingw491_32/include -IF:/IDE/QT/5.4/mingw491_32/include/QtWidgets -IF:/IDE/QT/5.4/mingw491_32/include/QtGui -IF:/IDE/QT/5.4/mingw491_32/include/QtSql -IF:/IDE/QT/5.4/mingw491_32/include/QtSerialPort -IF:/IDE/QT/5.4/mingw491_32/include/QtCore -I. ..\Environment_IOT\showmainwindow.h -o debug\moc_showmainwindow.cpp
 
@@ -692,6 +701,11 @@ debug/moc_comform.cpp: F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
 		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qfiledevice.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qvector2d.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPort \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialport.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPortInfo \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportinfo.h \
 		../Environment_IOT/comform.h
 	F:\IDE\QT\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/IDE/QT/5.4/mingw491_32/mkspecs/win32-g++ -IC:/Users/Administrator/OneDrive/Graduation_project/Environment_IOT -IF:/IDE/QT/5.4/mingw491_32/include -IF:/IDE/QT/5.4/mingw491_32/include/QtWidgets -IF:/IDE/QT/5.4/mingw491_32/include/QtGui -IF:/IDE/QT/5.4/mingw491_32/include/QtSql -IF:/IDE/QT/5.4/mingw491_32/include/QtSerialPort -IF:/IDE/QT/5.4/mingw491_32/include/QtCore -I. ..\Environment_IOT\comform.h -o debug\moc_comform.cpp
 
@@ -849,7 +863,15 @@ debug/main.o: ../Environment_IOT/main.cpp ../Environment_IOT/mainwindow.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qguiapplication.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qinputmethod.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QErrorMessage \
-		../Environment_IOT/showmainwindow.h
+		../Environment_IOT/showmainwindow.h \
+		../Environment_IOT/comform.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPort \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialport.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPortInfo \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Environment_IOT\main.cpp
 
 debug/mainwindow.o: ../Environment_IOT/mainwindow.cpp ../Environment_IOT/mainwindow.h \
@@ -1474,6 +1496,15 @@ debug/showmainwindow.o: ../Environment_IOT/showmainwindow.cpp ../Environment_IOT
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qtabwidget.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qicon.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QString \
+		../Environment_IOT/comform.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPort \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialport.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPortInfo \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray \
 		ui_showmainwindow.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QVariant \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QAction \
@@ -1508,9 +1539,19 @@ debug/showmainwindow.o: ../Environment_IOT/showmainwindow.cpp ../Environment_IOT
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QMenuBar \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qmenubar.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qmenu.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QPushButton \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qpushbutton.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractbutton.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QStatusBar \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qstatusbar.h \
-		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QTextBrowser \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qtextbrowser.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qtextedit.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtextdocument.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtextoption.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtextcursor.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtextformat.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qpen.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QMenu \
 		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\showmainwindow.o ..\Environment_IOT\showmainwindow.cpp
@@ -1618,7 +1659,58 @@ debug/comform.o: ../Environment_IOT/comform.cpp ../Environment_IOT/comform.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qfiledevice.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qvector2d.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
-		ui_comform.h
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPort \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialport.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPortInfo \
+		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportinfo.h \
+		ui_comform.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QVariant \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QAction \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qaction.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qicon.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qactiongroup.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QApplication \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qapplication.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcoreapplication.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qeventloop.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qdesktopwidget.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qguiapplication.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qinputmethod.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QButtonGroup \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qbuttongroup.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QComboBox \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qcombobox.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qstyleoption.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractspinbox.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qvalidator.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qregularexpression.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qslider.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractslider.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qstyle.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qtabbar.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qtabwidget.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qrubberband.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qframe.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qabstractitemmodel.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QHBoxLayout \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qboxlayout.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qlayout.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qlayoutitem.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qgridlayout.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QHeaderView \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qheaderview.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractitemview.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qitemselectionmodel.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QLabel \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qlabel.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QPushButton \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qpushbutton.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qabstractbutton.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QVBoxLayout \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\comform.o ..\Environment_IOT\comform.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 

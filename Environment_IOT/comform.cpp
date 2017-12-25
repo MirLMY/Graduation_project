@@ -32,6 +32,7 @@ comForm::comForm(QWidget *parent) :
 comForm::~comForm()
 {
     delete ui;
+    delete my_serialport;
 }
 
 void comForm::on_openClose_Button_clicked()
