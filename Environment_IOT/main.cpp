@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QErrorMessage>
-#include "showmainwindow.h"
+#include "protocolanalysis.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,9 +19,11 @@ int main(int argc, char *argv[])
         msg->showMessage("服务器连接错误,请重启服务器");
         msg->exec();
     }
+    QByteArray sendBuffer = "A3 52 33 01 10 2B 00 00 05 00 00 00 00 01 01 52";
 
-    MainWindow w;
-    w.show();
+    QByteArray rx_Buffer = QByteArray::fromHex(sendBuffer);
+    ProtocolAnalysis w(rx_Buffer,rx_Buffer.length());
+    w.bufferToJson();
 
     return a.exec();
 }

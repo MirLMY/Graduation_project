@@ -51,8 +51,9 @@ void ShowMainWindow::recv_serialport()
     //校验位检测
     if(qChecksum(comBuffer, comBuffer_len-2) == checkSum)
     {
-        //解析包
-
+        ProtocolAnalysis protocolAnalysis(comBuffer,comBuffer.length()-2);//解析包
+        QByteArray comBufferJson = protocolAnalysis.bufferToJson();
+        //json解析出cmd，head,cmd
     }
     else
     {
@@ -64,15 +65,12 @@ void ShowMainWindow::recv_serialport()
 
 void ShowMainWindow::on_sendButton_clicked()
 {
-    QByteArray sendBuffer = "A3 52 33 01 10 2B 00 00 05 00 00 00 00 01 01 52 00 6C ";
+    QByteArray sendBuffer = "A3 52 33 01 10 2B 00 00 05 00 00 00 00 01 01 52";
 
     QByteArray rx_Buffer = QByteArray::fromHex(sendBuffer);
-    int lenth = rx_Buffer.length();
-    qDebug() << lenth;
-    qDebug() << rx_Buffer.data()[16];
-    if(rx_Buffer[17] == 0x6c)
+    quint8 x = rx_Buffer[0];
+    if(x = 0xa3)
     {
-        qDebug() << "ok";
+        qDebug()<<x<<QString::number(x,16);
     }
-
 }

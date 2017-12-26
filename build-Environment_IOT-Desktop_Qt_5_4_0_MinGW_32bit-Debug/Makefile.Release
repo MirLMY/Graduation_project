@@ -48,33 +48,39 @@ SOURCES       = ..\Environment_IOT\main.cpp \
 		..\Environment_IOT\register.cpp \
 		..\Environment_IOT\forgetpassword.cpp \
 		..\Environment_IOT\showmainwindow.cpp \
-		..\Environment_IOT\comform.cpp release\moc_mainwindow.cpp \
+		..\Environment_IOT\comform.cpp \
+		..\Environment_IOT\protocolanalysis.cpp release\moc_mainwindow.cpp \
 		release\moc_register.cpp \
 		release\moc_forgetpassword.cpp \
 		release\moc_showmainwindow.cpp \
-		release\moc_comform.cpp
+		release\moc_comform.cpp \
+		release\moc_protocolanalysis.cpp
 OBJECTS       = release/main.o \
 		release/mainwindow.o \
 		release/register.o \
 		release/forgetpassword.o \
 		release/showmainwindow.o \
 		release/comform.o \
+		release/protocolanalysis.o \
 		release/moc_mainwindow.o \
 		release/moc_register.o \
 		release/moc_forgetpassword.o \
 		release/moc_showmainwindow.o \
-		release/moc_comform.o
+		release/moc_comform.o \
+		release/moc_protocolanalysis.o
 
 DIST          =  ..\Environment_IOT\mainwindow.h \
 		..\Environment_IOT\register.h \
 		..\Environment_IOT\forgetpassword.h \
 		..\Environment_IOT\showmainwindow.h \
-		..\Environment_IOT\comform.h ..\Environment_IOT\main.cpp \
+		..\Environment_IOT\comform.h \
+		..\Environment_IOT\protocolanalysis.h ..\Environment_IOT\main.cpp \
 		..\Environment_IOT\mainwindow.cpp \
 		..\Environment_IOT\register.cpp \
 		..\Environment_IOT\forgetpassword.cpp \
 		..\Environment_IOT\showmainwindow.cpp \
-		..\Environment_IOT\comform.cpp
+		..\Environment_IOT\comform.cpp \
+		..\Environment_IOT\protocolanalysis.cpp
 QMAKE_TARGET  = Environment_IOT
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = Environment_IOT.exe
@@ -113,7 +119,7 @@ dist:
 	$(ZIP) Environment_IOT.zip $(SOURCES) $(DIST) ..\Environment_IOT\Environment_IOT.pro F:\IDE\QT\5.4\mingw491_32\mkspecs\features\spec_pre.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\qdevice.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\features\device_config.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\common\shell-win32.conf F:\IDE\QT\5.4\mingw491_32\mkspecs\qconfig.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axbase.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axbase_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axcontainer.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axcontainer_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axserver.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axserver_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_bluetooth.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_bluetooth_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_bootstrap_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_clucene_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_concurrent.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_concurrent_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_core.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_core_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_declarative.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_declarative_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_designer.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_designer_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_designercomponents_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_enginio.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_enginio_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_gui.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_gui_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_help.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_help_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_location.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_location_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimedia.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimedia_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimediawidgets.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_network.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_network_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_nfc.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_nfc_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_opengl.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_opengl_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_openglextensions.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_openglextensions_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_platformsupport_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_positioning.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_positioning_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_printsupport.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_printsupport_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qml.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qml_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qmldevtools_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qmltest.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qmltest_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quick.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quick_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quickparticles_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quickwidgets.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quickwidgets_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_script.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_script_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_scripttools.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_scripttools_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sensors.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sensors_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_serialport.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_serialport_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sql.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sql_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_svg.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_svg_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_testlib.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_testlib_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_uitools.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_uitools_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webchannel.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webchannel_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkit.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkit_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkitwidgets.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_websockets.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_websockets_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webview.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webview_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_widgets.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_widgets_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_winextras.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_winextras_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xml.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xml_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xmlpatterns.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri F:\IDE\QT\5.4\mingw491_32\mkspecs\features\qt_functions.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\qt_config.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\win32\qt_config.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\win32-g++\qmake.conf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\spec_post.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\exclusive_builds.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\default_pre.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\win32\default_pre.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\resolve_config.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\exclusive_builds_post.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\default_post.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\build_pass.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\win32\rtti.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\precompile_header.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\warn_on.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\qt.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\resources.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\moc.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\win32\opengl.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\uic.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\win32\windows.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\testcase_targets.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\exceptions.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\yacc.prf F:\IDE\QT\5.4\mingw491_32\mkspecs\features\lex.prf ..\Environment_IOT\Environment_IOT.pro F:/IDE/QT/5.4/mingw491_32/lib/qtmain.prl F:/IDE/QT/5.4/mingw491_32/lib/Qt5Core.prl F:/IDE/QT/5.4/mingw491_32/lib/Qt5Widgets.prl F:/IDE/QT/5.4/mingw491_32/lib/Qt5Gui.prl F:/IDE/QT/5.4/mingw491_32/lib/Qt5Sql.prl F:/IDE/QT/5.4/mingw491_32/lib/Qt5SerialPort.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\mainwindow.o release\register.o release\forgetpassword.o release\showmainwindow.o release\comform.o release\moc_mainwindow.o release\moc_register.o release\moc_forgetpassword.o release\moc_showmainwindow.o release\moc_comform.o
+	-$(DEL_FILE) release\main.o release\mainwindow.o release\register.o release\forgetpassword.o release\showmainwindow.o release\comform.o release\protocolanalysis.o release\moc_mainwindow.o release\moc_register.o release\moc_forgetpassword.o release\moc_showmainwindow.o release\moc_comform.o release\moc_protocolanalysis.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -129,9 +135,9 @@ compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: release/moc_mainwindow.cpp release/moc_register.cpp release/moc_forgetpassword.cpp release/moc_showmainwindow.cpp release/moc_comform.cpp
+compiler_moc_header_make_all: release/moc_mainwindow.cpp release/moc_register.cpp release/moc_forgetpassword.cpp release/moc_showmainwindow.cpp release/moc_comform.cpp release/moc_protocolanalysis.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_mainwindow.cpp release\moc_register.cpp release\moc_forgetpassword.cpp release\moc_showmainwindow.cpp release\moc_comform.cpp
+	-$(DEL_FILE) release\moc_mainwindow.cpp release\moc_register.cpp release\moc_forgetpassword.cpp release\moc_showmainwindow.cpp release\moc_comform.cpp release\moc_protocolanalysis.cpp
 release/moc_mainwindow.cpp: F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QMainWindow \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qmainwindow.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/qwidget.h \
@@ -709,6 +715,66 @@ release/moc_comform.cpp: F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
 		../Environment_IOT/comform.h
 	F:\IDE\QT\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/IDE/QT/5.4/mingw491_32/mkspecs/win32-g++ -IC:/Users/Administrator/OneDrive/Graduation_project/Environment_IOT -IF:/IDE/QT/5.4/mingw491_32/include -IF:/IDE/QT/5.4/mingw491_32/include/QtWidgets -IF:/IDE/QT/5.4/mingw491_32/include/QtGui -IF:/IDE/QT/5.4/mingw491_32/include/QtSql -IF:/IDE/QT/5.4/mingw491_32/include/QtSerialPort -IF:/IDE/QT/5.4/mingw491_32/include/QtCore -I. ..\Environment_IOT\comform.h -o release\moc_comform.cpp
 
+release/moc_protocolanalysis.cpp: F:/IDE/QT/5.4/mingw491_32/include/QtCore/QObject \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobject.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobjectdefs.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qnamespace.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qconfig.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qfeatures.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qsystemdetection.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qprocessordetection.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcompilerdetection.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qtypeinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qtypetraits.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qsysinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qlogging.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qflags.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qbasicatomic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_bootstrap.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qgenericatomic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_msvc.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_armv7.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_armv6.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_armv5.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_ia64.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_mips.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_x86.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_cxx11.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_gcc.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_unix.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qglobalstatic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qmutex.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qnumeric.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobjectdefs_impl.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qstring.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qchar.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qbytearray.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qrefcount.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qarraydata.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qstringbuilder.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qlist.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qalgorithms.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qiterator.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qbytearraylist.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcoreevent.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qscopedpointer.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qmetatype.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qvarlengtharray.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcontainerfwd.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qisenum.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobject_impl.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QJsonObject \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsonobject.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsonvalue.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qpair.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QJsonDocument \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsondocument.h \
+		../Environment_IOT/protocolanalysis.h
+	F:\IDE\QT\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/IDE/QT/5.4/mingw491_32/mkspecs/win32-g++ -IC:/Users/Administrator/OneDrive/Graduation_project/Environment_IOT -IF:/IDE/QT/5.4/mingw491_32/include -IF:/IDE/QT/5.4/mingw491_32/include/QtWidgets -IF:/IDE/QT/5.4/mingw491_32/include/QtGui -IF:/IDE/QT/5.4/mingw491_32/include/QtSql -IF:/IDE/QT/5.4/mingw491_32/include/QtSerialPort -IF:/IDE/QT/5.4/mingw491_32/include/QtCore -I. ..\Environment_IOT\protocolanalysis.h -o release\moc_protocolanalysis.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all: ui_mainwindow.h ui_register.h ui_forgetpassword.h ui_showmainwindow.h ui_comform.h
@@ -863,15 +929,14 @@ release/main.o: ../Environment_IOT/main.cpp ../Environment_IOT/mainwindow.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qguiapplication.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtGui/qinputmethod.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QErrorMessage \
-		../Environment_IOT/showmainwindow.h \
-		../Environment_IOT/comform.h \
-		F:/IDE/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
-		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPort \
-		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialport.h \
-		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportglobal.h \
-		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/QSerialPortInfo \
-		F:/IDE/QT/5.4/mingw491_32/include/QtSerialPort/qserialportinfo.h \
-		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray
+		../Environment_IOT/protocolanalysis.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QObject \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QJsonObject \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsonobject.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsonvalue.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QJsonDocument \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsondocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Environment_IOT\main.cpp
 
 release/mainwindow.o: ../Environment_IOT/mainwindow.cpp ../Environment_IOT/mainwindow.h \
@@ -1713,6 +1778,66 @@ release/comform.o: ../Environment_IOT/comform.cpp ../Environment_IOT/comform.h \
 		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\comform.o ..\Environment_IOT\comform.cpp
 
+release/protocolanalysis.o: ../Environment_IOT/protocolanalysis.cpp ../Environment_IOT/protocolanalysis.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QObject \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobject.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobjectdefs.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qnamespace.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qglobal.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qconfig.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qfeatures.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qsystemdetection.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qprocessordetection.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcompilerdetection.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qtypeinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qtypetraits.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qsysinfo.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qlogging.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qflags.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qbasicatomic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_bootstrap.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qgenericatomic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_msvc.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_armv7.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_armv6.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_armv5.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_ia64.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_mips.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_x86.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_cxx11.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_gcc.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qatomic_unix.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qglobalstatic.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qmutex.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qnumeric.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobjectdefs_impl.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qstring.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qchar.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qbytearray.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qrefcount.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qarraydata.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qstringbuilder.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qlist.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qalgorithms.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qiterator.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qbytearraylist.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcoreevent.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qscopedpointer.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qmetatype.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qvarlengtharray.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qcontainerfwd.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qisenum.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qobject_impl.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QByteArray \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QJsonObject \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsonobject.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsonvalue.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qpair.h \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/QJsonDocument \
+		F:/IDE/QT/5.4/mingw491_32/include/QtCore/qjsondocument.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\protocolanalysis.o ..\Environment_IOT\protocolanalysis.cpp
+
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_mainwindow.o release\moc_mainwindow.cpp
 
@@ -1727,6 +1852,9 @@ release/moc_showmainwindow.o: release/moc_showmainwindow.cpp
 
 release/moc_comform.o: release/moc_comform.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_comform.o release\moc_comform.cpp
+
+release/moc_protocolanalysis.o: release/moc_protocolanalysis.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_protocolanalysis.o release\moc_protocolanalysis.cpp
 
 ####### Install
 

@@ -19,13 +19,15 @@ SOURCES += main.cpp\
     register.cpp \
     forgetpassword.cpp \
     showmainwindow.cpp \
-    comform.cpp
+    comform.cpp \
+    protocolanalysis.cpp
 
 HEADERS  += mainwindow.h \
     register.h \
     forgetpassword.h \
     showmainwindow.h \
-    comform.h
+    comform.h \
+    protocolanalysis.h
 
 FORMS    += mainwindow.ui \
     register.ui \

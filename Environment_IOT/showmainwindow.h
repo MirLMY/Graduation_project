@@ -6,6 +6,7 @@
 #include "comform.h"
 #include <QByteArray>
 #include <QString>
+#include "protocolanalysis.h"
 
 #define IOT_SEND_HEAD 0x12
 
