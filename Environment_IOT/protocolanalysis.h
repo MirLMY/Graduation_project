@@ -15,6 +15,7 @@ class ProtocolAnalysis : public QObject
 public:
     explicit ProtocolAnalysis(QByteArray buffer,int len,QObject *parent = 0);
     ~ProtocolAnalysis();
+    quint8 *protocolInfo;
 
 signals:
 private:
@@ -22,7 +23,10 @@ private:
     int lenth;
 
 public slots:
-    QByteArray bufferToJson();
+    quint8 bufferToHead();
+    quint8 bufferToCmd();
+    quint8 bufferToIp();
+    quint8 *bufferToInfo();
 };
 
 #endif // PROTOCOLANALYSIS_H

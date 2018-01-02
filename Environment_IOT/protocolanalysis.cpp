@@ -4,28 +4,40 @@ ProtocolAnalysis::ProtocolAnalysis(QByteArray buffer,int len, QObject *parent) :
 {
     protocolBuffer = buffer;
     lenth = len;
+    protocolInfo = new quint8(PROTOCOLINFO_SIZE);
 }
 
 ProtocolAnalysis::~ProtocolAnalysis()
 {
+    delete protocolInfo;
+}
+
+quint8 ProtocolAnalysis::bufferToHead()
+{
+
+    return protocolBuffer[0];
 
 }
 
-QByteArray ProtocolAnalysis::bufferToJson()
+quint8 ProtocolAnalysis::bufferToCmd()
 {
-    quint8 protocolHead = protocolBuffer[0];
-    quint8 protocolCmd = protocolBuffer[1];
-    quint8 protocolIp = protocolBuffer[2];
 
-    QJsonObject json;
-    json.insert("head",protocolHead);
-    json.insert("cmd",protocolCmd);
-    json.insert("ip",protocolIp);
+    return protocolBuffer[1];
 
-    QJsonDocument document;
-    document.setObject(json);
-    QByteArray sendJsonBuffer = document.toJson(QJsonDocument::Compact);
-    qDebug()<<sendJsonBuffer;
-    return sendJsonBuffer;
+}
+quint8 ProtocolAnalysis::bufferToIp()
+{
+
+    return protocolBuffer[2];
+
+}
+quint8* ProtocolAnalysis::bufferToInfo()
+{
+
+    for(int i = 3;i < lenth;i++)
+    {
+        protocolInfo[i-3] = protocolBuffer[i];
+    }
+    return protocolInfo;
 
 }

@@ -1,6 +1,5 @@
 #include "showmainwindow.h"
 #include "ui_showmainwindow.h"
-#include <QMenu>
 #include <QDebug>
 
 ShowMainWindow::ShowMainWindow(QWidget *parent) :
@@ -9,9 +8,11 @@ ShowMainWindow::ShowMainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QMenu *menu1= new QMenu("设置");
-    QAction * comAction = new QAction(menu1);
-    QAction * sqlAction = new QAction(menu1);
+    comform = new comForm();
+
+    menu1= new QMenu("设置");
+    comAction = new QAction(menu1);
+    sqlAction = new QAction(menu1);
     sqlAction->setText("MYSQL数据");
     comAction->setText("串口配置");
     menu1->addAction(comAction);
@@ -26,6 +27,9 @@ ShowMainWindow::~ShowMainWindow()
 {
     delete ui;
     delete comform;
+    delete comAction;
+    delete sqlAction;
+    delete menu1;
 }
 
 void ShowMainWindow::serialPortAction()
@@ -51,9 +55,9 @@ void ShowMainWindow::recv_serialport()
     //校验位检测
     if(qChecksum(comBuffer, comBuffer_len-2) == checkSum)
     {
-        ProtocolAnalysis protocolAnalysis(comBuffer,comBuffer.length()-2);//解析包
-        QByteArray comBufferJson = protocolAnalysis.bufferToJson();
-        //json解析出cmd，head,cmd
+
+        //protocolAnalysis解析出cmd，head,cmd,info
+
     }
     else
     {

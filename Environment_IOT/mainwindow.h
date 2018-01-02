@@ -6,6 +6,7 @@
 #include <qerrormessage.h>
 #include <QString>
 #include <QSqlQuery>
+#include "showmainwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    ShowMainWindow *showMainWindow;
 
 private slots:
     void on_landing_Button_clicked();

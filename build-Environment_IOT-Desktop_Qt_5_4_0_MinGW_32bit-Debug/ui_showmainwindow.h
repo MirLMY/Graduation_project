@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -29,6 +30,7 @@ public:
     QWidget *centralwidget;
     QTextBrowser *textBrowser;
     QPushButton *sendButton;
+    QDateEdit *dateEdit;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -41,10 +43,13 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         textBrowser = new QTextBrowser(centralwidget);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(200, 150, 256, 192));
+        textBrowser->setGeometry(QRect(160, 350, 256, 192));
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName(QStringLiteral("sendButton"));
         sendButton->setGeometry(QRect(460, 400, 75, 23));
+        dateEdit = new QDateEdit(centralwidget);
+        dateEdit->setObjectName(QStringLiteral("dateEdit"));
+        dateEdit->setGeometry(QRect(550, 70, 130, 22));
         ShowMainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ShowMainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));

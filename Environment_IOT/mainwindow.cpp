@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete showMainWindow;
 }
 
 //登陆按钮
@@ -40,6 +41,12 @@ void MainWindow::on_landing_Button_clicked()
         ui->password->setText(NULL);
 
         QMessageBox::critical(NULL, "Warning", "用户名不存在或者密码错误，请重新输入！", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    }
+    else
+    {
+        showMainWindow = new ShowMainWindow();
+        showMainWindow->show();
+        this->close();
     }
 
 

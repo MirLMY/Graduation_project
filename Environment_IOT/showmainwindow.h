@@ -7,6 +7,7 @@
 #include <QByteArray>
 #include <QString>
 #include "protocolanalysis.h"
+#include <QMenu>
 
 #define IOT_SEND_HEAD 0x12
 
@@ -21,7 +22,10 @@ class ShowMainWindow : public QMainWindow
 public:
     explicit ShowMainWindow(QWidget *parent = 0);
     ~ShowMainWindow();
-    comForm *comform  = new comForm();
+    comForm *comform ;
+    QMenu *menu1;
+    QAction * comAction;
+    QAction * sqlAction;
 
 private:
     Ui::ShowMainWindow *ui;
