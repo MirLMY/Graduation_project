@@ -8,6 +8,7 @@
 #include <QString>
 #include "protocolanalysis.h"
 #include <QMenu>
+#include <QMessageBox>
 
 #include <QWidget>
 #include <QRectF>
@@ -19,7 +20,26 @@
 #include <QPainter>
 #include <QtMath>
 
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
+#include<QPixmap>
+
+
 #define IOT_SEND_HEAD 0x12
+
+struct Today
+{
+    QString ganmao;
+    QString city;
+    QString updatetime;
+    QString wendu;
+    QString fengli;
+    QString fengxiang;
+    QString sunrise;
+    QString sunset;
+    QString shidu;
+    QString type;
+};
 
 namespace Ui {
 class ShowMainWindow;
@@ -39,6 +59,12 @@ public:
 
 private:
     Ui::ShowMainWindow *ui;
+    QNetworkAccessManager *manager;
+    QString URL_1;
+    QString URL_2;
+
+    int choose;
+    Today today;
 
 private slots:
     void serialPortAction();
@@ -48,6 +74,9 @@ private slots:
 
     QRectF textRectF(double radius, int pointSize, double angle);
     void paintEvent(QPaintEvent *event);
+
+    void replayFinished(QNetworkReply *reply);
+    void parseXml(QString Xml);
 };
 
 #endif // SHOWMAINWINDOW_H

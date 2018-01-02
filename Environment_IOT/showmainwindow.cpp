@@ -1,6 +1,7 @@
 #include "showmainwindow.h"
 #include "ui_showmainwindow.h"
 #include <QDebug>
+#include <QXmlStreamReader>
 
 ShowMainWindow::ShowMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +19,16 @@ ShowMainWindow::ShowMainWindow(QWidget *parent) :
     menu1->addAction(comAction);
     menu1->addAction(sqlAction);
     ui->menubar->addMenu(menu1);
+
+    manager = new QNetworkAccessManager(this);
+    //天气API
+    //URL_1 = "http://wthrcdn.etouch.cn/weather_mini?city=";
+    //URL_2 = "http://wthrcdn.etouch.cn/WeatherApi?city="
+    URL_2 = "http://wthrcdn.etouch.cn/WeatherApi?citykey=101270101";//成都天气xml
+
+    connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(replayFinished(QNetworkReply*)));
+
+    manager->get(QNetworkRequest(QUrl(URL_2)));
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -180,3 +191,88 @@ void ShowMainWindow::paintEvent(QPaintEvent *event)
     painter.drawConvexPolygon(secondHand, 3);
     painter.restore();
 }
+
+void ShowMainWindow::replayFinished(QNetworkReply *reply)
+{
+    QVariant status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    if(reply->error() == QNetworkReply::NoError)
+    {
+        QByteArray bytes = reply->readAll();
+        //QString result(bytes);
+        //qDebug()<<result;
+
+            QString result(bytes);
+            //qDebug()<<result;
+            parseXml(result);
+
+
+    }
+    else
+        QMessageBox::information(this,tr("出错啦"),tr("网络错误,请检查网络连接"),QMessageBox::Ok,QMessageBox::Ok);
+        //qDebug()<<"网络出错\n";
+}
+
+void ShowMainWindow::parseXml(QString Xml)
+{
+    QXmlStreamReader xml(Xml);
+
+    while(!xml.atEnd())
+    {
+        if(xml.hasError())
+        {
+            QMessageBox::information(this,tr("出错啦"),tr("数据出错,请重试"),QMessageBox::Ok,QMessageBox::Ok);
+            return;
+        }
+        else if(xml.isStartElement())
+        {
+            if(xml.name()=="city")
+            {
+                today.city = xml.readElementText();
+            }
+            else if(xml.name()=="updatetime")
+            {
+                today.updatetime = xml.readElementText();
+            }
+            else if(xml.name()=="wendu")
+            {
+                today.wendu = xml.readElementText();
+            }
+            else if(xml.name()=="fengli")
+            {
+                today.fengli = xml.readElementText();
+            }
+            else if(xml.name()=="shidu")
+            {
+                today.shidu = xml.readElementText();
+            }
+            else if(xml.name()=="fengxiang")
+            {
+                today.fengxiang = xml.readElementText();
+            }
+            else if(xml.name()=="sunrise_1")
+            {
+                today.sunrise = xml.readElementText();
+            }
+            else if(xml.name() == "type")
+            {
+                today.type = xml.readElementText();
+           }
+            else if(xml.name()=="sunset_1")
+            {
+                today.sunset = xml.readElementText();
+                xml.clear();
+               ui->label->setText(tr("%1").arg(today.city));
+               ui->label_2->setText(tr("%1℃").arg(today.wendu));
+               //ui->forecast_0_type->setPixmap(QPixmap(":/images/多云"));
+                return;
+            }
+            else
+                xml.readNext();
+        }
+        else
+            xml.readNext();
+    }
+    xml.clear();
+
+}
+
