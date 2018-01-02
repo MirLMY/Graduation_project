@@ -3,7 +3,7 @@
 #include <QErrorMessage>
 #include <QDebug>
 #include <QByteArray>
-#include "protocolanalysis.h"
+#include "showmainwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
         msg->showMessage("服务器连接错误,请重启服务器");
         msg->exec();
     }
-    MainWindow w;
+    ShowMainWindow w;
     w.show();
 
     return a.exec();
