@@ -34,3 +34,6 @@ FORMS    += mainwindow.ui \
     forgetpassword.ui \
     showmainwindow.ui \
     comform.ui
+
+RESOURCES += \
+    images.qrc

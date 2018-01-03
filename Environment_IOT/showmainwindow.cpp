@@ -229,43 +229,17 @@ void ShowMainWindow::parseXml(QString Xml)
             {
                 today.city = xml.readElementText();
             }
-            else if(xml.name()=="updatetime")
-            {
-                today.updatetime = xml.readElementText();
-            }
-            else if(xml.name()=="wendu")
-            {
-                today.wendu = xml.readElementText();
-            }
-            else if(xml.name()=="fengli")
-            {
-                today.fengli = xml.readElementText();
-            }
-            else if(xml.name()=="shidu")
-            {
-                today.shidu = xml.readElementText();
-            }
-            else if(xml.name()=="fengxiang")
-            {
-                today.fengxiang = xml.readElementText();
-            }
-            else if(xml.name()=="sunrise_1")
-            {
-                today.sunrise = xml.readElementText();
-            }
             else if(xml.name() == "type")
             {
                 today.type = xml.readElementText();
-           }
-            else if(xml.name()=="sunset_1")
-            {
-                today.sunset = xml.readElementText();
+
                 xml.clear();
-               ui->label->setText(tr("%1").arg(today.city));
-               ui->label_2->setText(tr("%1℃").arg(today.wendu));
-               //ui->forecast_0_type->setPixmap(QPixmap(":/images/多云"));
+
+                ui->city_label->setText(tr("%1").arg(today.city));
+                ui->forecast_0_type->setPixmap(QPixmap(tr(":/images/images/%1").arg(today.type)));
+
                 return;
-            }
+           }
             else
                 xml.readNext();
         }
@@ -273,6 +247,7 @@ void ShowMainWindow::parseXml(QString Xml)
             xml.readNext();
     }
     xml.clear();
+
 
 }
 
