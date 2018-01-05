@@ -16,7 +16,7 @@ class comForm : public QWidget
 public:
     explicit comForm(QWidget *parent = 0);
     ~comForm();
-    QSerialPort *my_serialport = new QSerialPort();
+    QSerialPort *my_serialport;
 
 private slots:
     void on_openClose_Button_clicked();

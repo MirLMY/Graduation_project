@@ -10,6 +10,7 @@ comForm::comForm(QWidget *parent) :
 {
     //获取COM号，并添加到控件中去
     ui->setupUi(this);
+    my_serialport = new QSerialPort();
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
     {
         ui->com_Box->addItem(info.portName());
