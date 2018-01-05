@@ -27,7 +27,8 @@ HEADERS  += mainwindow.h \
     forgetpassword.h \
     showmainwindow.h \
     comform.h \
-    protocolanalysis.h
+    protocolanalysis.h \
+    macro.h
 
 FORMS    += mainwindow.ui \
     register.ui \

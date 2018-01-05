@@ -66,11 +66,20 @@ private:
     int choose;
     Today today;
 
+    ProtocolAnalysis *protocolAnalysis;
+    QString timeT;
+    QDateTime dateTime;
+    qint64 timestamp;
+
 private slots:
     void serialPortAction();
     void mysqlAction();
     void recv_serialport();
-    void on_sendButton_clicked();
+    void prase_cmd_package(QByteArray);
+    void prase_period_info_package(quint8, quint8*, int);
+    void prase_get_info_package(quint8, quint8*, int);
+    QString prase_info_to_string(quint8*, int);
+
 
     QRectF textRectF(double radius, int pointSize, double angle);
     void paintEvent(QPaintEvent *event);

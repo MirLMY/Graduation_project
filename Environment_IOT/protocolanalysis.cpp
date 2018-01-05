@@ -4,7 +4,9 @@ ProtocolAnalysis::ProtocolAnalysis(QByteArray buffer,int len, QObject *parent) :
 {
     protocolBuffer = buffer;
     lenth = len;
+    infoLen = len-5;
     protocolInfo = new quint8(PROTOCOLINFO_SIZE);
+    memset(protocolInfo,0,PROTOCOLINFO_SIZE);
 }
 
 ProtocolAnalysis::~ProtocolAnalysis()

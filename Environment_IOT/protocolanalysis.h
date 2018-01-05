@@ -16,6 +16,7 @@ public:
     explicit ProtocolAnalysis(QByteArray buffer,int len,QObject *parent = 0);
     ~ProtocolAnalysis();
     quint8 *protocolInfo;
+    int infoLen;
 
 signals:
 private:

@@ -2,6 +2,9 @@
 #include "ui_showmainwindow.h"
 #include <QDebug>
 #include <QXmlStreamReader>
+#include <QDateTime>
+#include <QSqlQuery>
+#include "macro.h"
 
 ShowMainWindow::ShowMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +37,9 @@ ShowMainWindow::ShowMainWindow(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     timer->start(1000);
 
+    dateTime = QDateTime::currentDateTime();//初始化获取时间戳
+    timestamp = dateTime.toMSecsSinceEpoch();
+
     connect(comAction, SIGNAL(triggered()), this, SLOT(serialPortAction()));
     connect(sqlAction,SIGNAL(triggered()),this,SLOT(mysqlAction()));
 }
@@ -65,19 +71,84 @@ void ShowMainWindow::recv_serialport()
     QByteArray comBuffer = comform->my_serialport->readAll();//接收串口的内容
     int comBuffer_len = comBuffer.length();//记录接收数据长度
 
-    qint16 checkSum = (comBuffer[comBuffer_len-2]<<8) | (comBuffer[comBuffer_len-1]);//提取接收数据后2位的校验位
+    quint16 checkSum = ((comBuffer[comBuffer_len-2])<<8) | (comBuffer[comBuffer_len-1]);//提取接收数据后2位的校验位
 
     //校验位检测
+    qDebug() << "checksum is "<<QByteArray::number(checkSum,16);
+    qDebug() << QByteArray::number(qChecksum(comBuffer, comBuffer_len-2),16);
     if(qChecksum(comBuffer, comBuffer_len-2) == checkSum)
     {
 
         //protocolAnalysis解析出cmd，head,cmd,info
+        prase_cmd_package(comBuffer);
 
     }
     else
     {
         qDebug()<< "校验位不正确";
     }
+}
+
+//解析CMD然后根据CMD 进入不同的prase函数
+void ShowMainWindow::prase_cmd_package(QByteArray protocol)
+{
+    qDebug() << "in cmd package";
+    //传过来的Buffer包含了校验位，在PtrotocolAnalysis类中没有去剔除校验位
+    protocolAnalysis = new ProtocolAnalysis(protocol, protocol.length()-2);
+
+    if(protocolAnalysis->bufferToHead() == HEAD)
+    {
+        switch (protocolAnalysis->bufferToCmd()) {
+        case CMD_PERIOD_INFO:
+            prase_period_info_package(protocolAnalysis->bufferToIp(), protocolAnalysis->bufferToInfo(), protocolAnalysis->infoLen);
+            break;
+        case CMD_GET_INFO:
+            prase_get_info_package(protocolAnalysis->bufferToIp(), protocolAnalysis->bufferToInfo(), protocolAnalysis->infoLen);
+            break;
+        default:
+            qDebug() << "other cmd";
+        }
+    }
+    else
+    {
+        qDebug() << "head 错误！";
+    }
+
+    delete protocolAnalysis;
+    protocolAnalysis = NULL;
+}
+
+void ShowMainWindow::prase_period_info_package(quint8 ip, quint8 *info, int infoLen)
+{
+    QSqlQuery query;
+    qDebug()<< "in prase period info package";
+    //将quint8的info转换为String类型
+    //QString strInfo = prase_info_to_string(info, infoLen);
+
+    //switch (ip) {
+    //case IP_PM2_5:
+    //    query.exec(tr("insert into PM2_5 value(%1,%2)").arg(timeT,strInfo));
+    //    break;
+   // default:
+    //    break;
+   // }
+
+}
+
+QString ShowMainWindow::prase_info_to_string(quint8* info, int infoLen)
+{
+    quint16 sum = 0;
+    for(int i = 0;i < infoLen; i++)
+    {
+       sum += info[i];
+    }
+
+
+}
+
+void ShowMainWindow::prase_get_info_package(quint8 ip,quint8 *info, int infoLen)
+{
+    QSqlQuery query;
 }
 
 QRectF ShowMainWindow::textRectF(double radius, int pointSize, double angle)
@@ -119,6 +190,13 @@ void ShowMainWindow::paintEvent(QPaintEvent *event)
 
     int side = qMin(width(), height());
     QTime time = QTime::currentTime();
+
+    //每1s获取一次时间戳并且更新UI上显示时间
+    dateTime = QDateTime::currentDateTime();
+    timestamp = dateTime.toMSecsSinceEpoch();
+    timeT = dateTime.toString();
+
+    ui->date_label->setText(timeT);
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);

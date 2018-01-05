@@ -1,21 +1,8 @@
 #include "comform.h"
 #include "ui_comform.h"
 #include <QDebug>
+#include "macro.h"
 
-#define BAUD_2400   0
-#define BAUD_4800   1
-#define BAUD_9600   2
-#define BAUD_115200 3
-
-#define NONE        0
-#define ODD         1
-#define EVEN        2
-#define MARK        3
-#define SPACE       4
-
-#define ONESTOP                 0
-#define ONEANDHALFStOP          1
-#define TWOSTOP                 2
 
 comForm::comForm(QWidget *parent) :
     QWidget(parent),
@@ -45,7 +32,7 @@ void comForm::on_openClose_Button_clicked()
     switch (ui->baud_Box->currentIndex())
     {
     case BAUD_2400:
-        my_serialport->setBaudRate(QSerialPort::Baud2400);
+        my_serialport->setBaudRate(460800);
         break;
     case BAUD_4800:
         my_serialport->setBaudRate(QSerialPort::Baud4800);
