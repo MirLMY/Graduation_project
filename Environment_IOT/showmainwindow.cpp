@@ -5,12 +5,19 @@
 #include <QDateTime>
 #include <QSqlQuery>
 #include "macro.h"
+#include <QSize>
 
 ShowMainWindow::ShowMainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ShowMainWindow)
 {
     ui->setupUi(this);
+
+    //设置pushbutton按下时有阴影
+    ui->PM2_5_Button->QAbstractButton::setCheckable(true);
+    ui->wind_Button->QAbstractButton::setCheckable(true);
+    ui->humidity_Button->QAbstractButton::setCheckable(true);
+    ui->tempe_Button->QAbstractButton::setCheckable(true);
 
     comform = new comForm();
 
@@ -47,10 +54,19 @@ ShowMainWindow::ShowMainWindow(QWidget *parent) :
 ShowMainWindow::~ShowMainWindow()
 {
     delete ui;
-    delete comform;
+    if(comform != NULL)
+    {
+        delete comform;
+        comform = NULL;
+    }
     delete comAction;
+    comAction = NULL;
+
     delete sqlAction;
+    sqlAction = NULL;
+
     delete menu1;
+    menu1 = NULL;
 }
 
 void ShowMainWindow::serialPortAction()
@@ -78,7 +94,6 @@ void ShowMainWindow::recv_serialport()
     qDebug() << QByteArray::number(qChecksum(comBuffer, comBuffer_len-2),16);
     if(qChecksum(comBuffer, comBuffer_len-2) == checkSum)
     {
-
         //protocolAnalysis解析出cmd，head,cmd,info
         prase_cmd_package(comBuffer);
 
@@ -118,20 +133,32 @@ void ShowMainWindow::prase_cmd_package(QByteArray protocol)
     protocolAnalysis = NULL;
 }
 
+//周期性回传数据
 void ShowMainWindow::prase_period_info_package(quint8 ip, quint8 *info, int infoLen)
 {
     QSqlQuery query;
-    qDebug()<< "in prase period info package";
-    //将quint8的info转换为String类型
-    //QString strInfo = prase_info_to_string(info, infoLen);
+    switch (ip) {
+    case IP_WIND:
 
-    //switch (ip) {
-    //case IP_PM2_5:
-    //    query.exec(tr("insert into PM2_5 value(%1,%2)").arg(timeT,strInfo));
-    //    break;
-   // default:
-    //    break;
-   // }
+        break;
+    case IP_THERMOMETER:
+
+        break;
+    case IP_HYGROMETER:
+
+        break;
+    case IP_INFRARED_BODY:
+
+        break;
+    case IP_PM2_5:
+
+        break;
+    case IP_FIRE:
+
+        break;
+    default:
+        break;
+    }
 
 }
 
@@ -146,9 +173,32 @@ QString ShowMainWindow::prase_info_to_string(quint8* info, int infoLen)
 
 }
 
+//下发查询指令回传数据
 void ShowMainWindow::prase_get_info_package(quint8 ip,quint8 *info, int infoLen)
 {
     QSqlQuery query;
+    switch (ip) {
+    case IP_WIND:
+
+        break;
+    case IP_THERMOMETER:
+
+        break;
+    case IP_HYGROMETER:
+
+        break;
+    case IP_INFRARED_BODY:
+
+        break;
+    case IP_PM2_5:
+
+        break;
+    case IP_FIRE:
+
+        break;
+    default:
+        break;
+    }
 }
 
 QRectF ShowMainWindow::textRectF(double radius, int pointSize, double angle)
@@ -161,6 +211,7 @@ QRectF ShowMainWindow::textRectF(double radius, int pointSize, double angle)
     return rectF;
 }
 
+//时钟界面
 void ShowMainWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -270,6 +321,7 @@ void ShowMainWindow::paintEvent(QPaintEvent *event)
     painter.restore();
 }
 
+//查询天气
 void ShowMainWindow::replayFinished(QNetworkReply *reply)
 {
     QVariant status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
@@ -329,3 +381,39 @@ void ShowMainWindow::parseXml(QString Xml)
 
 }
 
+
+void ShowMainWindow::on_PM2_5_Button_clicked()
+{
+    //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
+    ui->PM2_5_Button->QAbstractButton::setChecked(true);
+    ui->wind_Button->QAbstractButton::setChecked(false);
+    ui->humidity_Button->QAbstractButton::setChecked(false);
+    ui->tempe_Button->QAbstractButton::setChecked(false);
+}
+
+void ShowMainWindow::on_tempe_Button_clicked()
+{
+    //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
+    ui->tempe_Button->QAbstractButton::setChecked(true);
+    ui->PM2_5_Button->QAbstractButton::setChecked(false);
+    ui->wind_Button->QAbstractButton::setChecked(false);
+    ui->humidity_Button->QAbstractButton::setChecked(false);
+}
+
+void ShowMainWindow::on_humidity_Button_clicked()
+{
+   //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
+    ui->humidity_Button->QAbstractButton::setChecked(true);
+    ui->PM2_5_Button->QAbstractButton::setChecked(false);
+    ui->wind_Button->QAbstractButton::setChecked(false);
+    ui->tempe_Button->QAbstractButton::setChecked(false);
+}
+
+void ShowMainWindow::on_wind_Button_clicked()
+{
+   //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
+    ui->wind_Button->QAbstractButton::setChecked(true);
+    ui->PM2_5_Button->QAbstractButton::setChecked(false);
+    ui->humidity_Button->QAbstractButton::setChecked(false);
+    ui->tempe_Button->QAbstractButton::setChecked(false);
+}

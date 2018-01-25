@@ -3,7 +3,7 @@
 #include <QErrorMessage>
 #include <QDebug>
 #include <QByteArray>
-#include "showmainwindow.h"
+#include <showmainwindow.h>
 
 int main(int argc, char *argv[])
 {

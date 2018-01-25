@@ -64,7 +64,7 @@ void MainWindow::on_forget_Button_clicked()
     this->close();
     Register *changePassword = new Register();
     changePassword->show();
-    //changePassword->setAttribute(Qt::WA_DeleteOnClose);
+    changePassword->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 //注册账户UI界面

@@ -86,6 +86,10 @@ private slots:
 
     void replayFinished(QNetworkReply *reply);
     void parseXml(QString Xml);
+    void on_PM2_5_Button_clicked();
+    void on_tempe_Button_clicked();
+    void on_humidity_Button_clicked();
+    void on_wind_Button_clicked();
 };
 
 #endif // SHOWMAINWINDOW_H
