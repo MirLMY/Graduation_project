@@ -14,10 +14,10 @@ ShowMainWindow::ShowMainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //设置pushbutton按下时有阴影
-    ui->PM2_5_Button->QAbstractButton::setCheckable(true);
-    ui->wind_Button->QAbstractButton::setCheckable(true);
-    ui->humidity_Button->QAbstractButton::setCheckable(true);
-    ui->tempe_Button->QAbstractButton::setCheckable(true);
+    ButtonSetCheckable();
+
+    //灯开关控件初始化
+    WidgetInit();
 
     comform = new comForm();
 
@@ -40,6 +40,7 @@ ShowMainWindow::ShowMainWindow(QWidget *parent) :
 
     manager->get(QNetworkRequest(QUrl(URL_2)));
 
+    //定时器中断初始化
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     timer->start(1000);
@@ -67,6 +68,12 @@ ShowMainWindow::~ShowMainWindow()
 
     delete menu1;
     menu1 = NULL;
+
+    delete lightSwitch_Button;
+    delete lightSwitch_Label;
+    lightSwitch_Button = NULL;
+    lightSwitch_Label = NULL;
+
 }
 
 void ShowMainWindow::serialPortAction()
@@ -78,7 +85,7 @@ void ShowMainWindow::serialPortAction()
 
 void ShowMainWindow::mysqlAction()
 {
-    qDebug()<<"falser";
+    qDebug()<<"mysqlAction";
 }
 
 //串口接收的串口数据
@@ -381,39 +388,141 @@ void ShowMainWindow::parseXml(QString Xml)
 
 }
 
-
 void ShowMainWindow::on_PM2_5_Button_clicked()
 {
     //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
-    ui->PM2_5_Button->QAbstractButton::setChecked(true);
-    ui->wind_Button->QAbstractButton::setChecked(false);
-    ui->humidity_Button->QAbstractButton::setChecked(false);
-    ui->tempe_Button->QAbstractButton::setChecked(false);
+    ButtonSetChecked(PM2_5Button);
 }
 
 void ShowMainWindow::on_tempe_Button_clicked()
 {
     //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
-    ui->tempe_Button->QAbstractButton::setChecked(true);
-    ui->PM2_5_Button->QAbstractButton::setChecked(false);
-    ui->wind_Button->QAbstractButton::setChecked(false);
-    ui->humidity_Button->QAbstractButton::setChecked(false);
+   ButtonSetChecked(tempeButton);
 }
 
 void ShowMainWindow::on_humidity_Button_clicked()
 {
    //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
-    ui->humidity_Button->QAbstractButton::setChecked(true);
-    ui->PM2_5_Button->QAbstractButton::setChecked(false);
-    ui->wind_Button->QAbstractButton::setChecked(false);
-    ui->tempe_Button->QAbstractButton::setChecked(false);
+    ButtonSetChecked(humidityButton);
 }
 
 void ShowMainWindow::on_wind_Button_clicked()
 {
    //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
-    ui->wind_Button->QAbstractButton::setChecked(true);
+    ButtonSetChecked(windButton);
+}
+
+void ShowMainWindow::on_light_Button_clicked()
+{
+    ButtonSetChecked(lightButton);
+    WidgetSwitchShow(lightButton);
+}
+
+void ShowMainWindow::on_lightSwitch_Button_clicked()
+{
+    qDebug() << "in lightSwitch";
+}
+
+/**
+ *brief	打开界面中几个按钮的checkable
+ *param
+ *return
+ *note
+ */
+void ShowMainWindow::ButtonSetCheckable()
+{
+    ui->PM2_5_Button->QAbstractButton::setCheckable(true);
+    ui->wind_Button->QAbstractButton::setCheckable(true);
+    ui->humidity_Button->QAbstractButton::setCheckable(true);
+    ui->tempe_Button->QAbstractButton::setCheckable(true);
+}
+
+/**
+ *brief	打开按下按钮的控件的阴影 and 关闭其他按钮控件的阴影
+ *param 选择需要显示阴影的控件配置
+ *return
+ *note
+ */
+void ShowMainWindow::ButtonSetChecked(PushButtonSwitch_t pushButtonSwitch)
+{
+    ui->wind_Button->QAbstractButton::setChecked(false);
     ui->PM2_5_Button->QAbstractButton::setChecked(false);
     ui->humidity_Button->QAbstractButton::setChecked(false);
     ui->tempe_Button->QAbstractButton::setChecked(false);
+    ui->light_Button->QAbstractButton::setChecked(false);
+
+    switch (pushButtonSwitch) {
+    case windButton:
+        ui->wind_Button->QAbstractButton::setChecked(true);
+        break;
+    case PM2_5Button:
+        ui->PM2_5_Button->QAbstractButton::setChecked(true);
+        break;
+    case humidityButton:
+        ui->humidity_Button->QAbstractButton::setChecked(true);
+        break;
+    case tempeButton:
+        ui->tempe_Button->QAbstractButton::setChecked(true);
+        break;
+    case lightButton:
+        ui->light_Button->QAbstractButton::setChecked(false);
+        break;
+    default:
+        break;
+    }
+}
+
+/**
+ *brief	初始化每个主界面按钮控制的控件
+ *param 选择需要显示的控件
+ *return
+ *note
+ */
+void ShowMainWindow::WidgetInit()
+{
+    //灯光开关
+    lightSwitch_Button = new QPushButton(this);
+    lightSwitch_Label = new QLabel(this);
+
+    lightSwitch_Button->setGeometry(300, 230, 75, 30);
+    lightSwitch_Label->setGeometry(230, 220, 55, 40);
+
+    lightSwitch_Button->close();
+    lightSwitch_Label->close();
+
+    connect(lightSwitch_Button, SIGNAL(clicked()), this, SLOT(on_lightSwitch_Button_clicked()));
+}
+
+/**
+ *brief	选择需要显示的控件
+ *param
+ *return
+ *note
+ */
+void ShowMainWindow::WidgetSwitchShow(PushButtonSwitch_t pushButtonSwitch)
+{
+    lightSwitch_Button->close();
+    lightSwitch_Label->close();
+
+
+    switch (pushButtonSwitch) {
+    case windButton:
+
+        break;
+    case PM2_5Button:
+
+        break;
+    case humidityButton:
+
+        break;
+    case tempeButton:
+
+        break;
+    case lightButton:
+        lightSwitch_Button->show();
+        lightSwitch_Label->show();
+        break;
+    default:
+        break;
+    }
 }

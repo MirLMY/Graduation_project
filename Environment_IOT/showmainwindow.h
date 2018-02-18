@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QString>
 #include "comform.h"
+#include <QPushButton>
+#include <QLabel>
 #include <QByteArray>
 #include <QString>
 #include "protocolanalysis.h"
@@ -41,6 +43,15 @@ struct Today
     QString type;
 };
 
+//主界面按钮阴影配置
+typedef enum{
+    windButton = 0,
+    PM2_5Button,
+    humidityButton,
+    tempeButton,
+    lightButton,
+}PushButtonSwitch_t;
+
 namespace Ui {
 class ShowMainWindow;
 }
@@ -56,6 +67,9 @@ public:
     QMenu *menu1;
     QAction * comAction;
     QAction * sqlAction;
+
+    QPushButton *lightSwitch_Button;
+    QLabel *lightSwitch_Label;
 
 private:
     Ui::ShowMainWindow *ui;
@@ -90,6 +104,14 @@ private slots:
     void on_tempe_Button_clicked();
     void on_humidity_Button_clicked();
     void on_wind_Button_clicked();
+
+    void on_lightSwitch_Button_clicked();
+
+    void ButtonSetCheckable();
+    void ButtonSetChecked(PushButtonSwitch_t );
+    void WidgetSwitchShow(PushButtonSwitch_t );
+    void WidgetInit();
+    void on_light_Button_clicked();
 };
 
 #endif // SHOWMAINWINDOW_H
