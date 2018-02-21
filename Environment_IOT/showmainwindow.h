@@ -71,6 +71,11 @@ public:
     QPushButton *lightSwitch_Button;
     QLabel *lightSwitch_Label;
 
+    //设置开关状态的flag
+    bool lightFlag;
+
+    QPixmap *pixmap;
+
 private:
     Ui::ShowMainWindow *ui;
     QNetworkAccessManager *manager;

@@ -1,10 +1,5 @@
 <RCC>
     <qresource prefix="/images">
-        <file>images/icon.ico</file>
-        <file>images/UI.png</file>
-        <file>images/UI1.png</file>
-        <file>images/UI2.png</file>
-        <file>images/UI3.png</file>
         <file>images/update.png</file>
         <file>images/update_on.png</file>
         <file>images/暴雪.png</file>
@@ -36,5 +31,9 @@
         <file>images/中雨.png</file>
         <file>images/最小化.png</file>
         <file>images/最小化1.png</file>
+        <file>images/light/switch_off.png</file>
+        <file>images/light/switch_on.png</file>
+        <file>images/light/light_off.png</file>
+        <file>images/light/light_on.png</file>
     </qresource>
 </RCC>

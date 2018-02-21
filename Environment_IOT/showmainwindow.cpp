@@ -74,6 +74,9 @@ ShowMainWindow::~ShowMainWindow()
     lightSwitch_Button = NULL;
     lightSwitch_Label = NULL;
 
+    delete pixmap;
+    pixmap = NULL;
+
 }
 
 void ShowMainWindow::serialPortAction()
@@ -392,24 +395,28 @@ void ShowMainWindow::on_PM2_5_Button_clicked()
 {
     //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
     ButtonSetChecked(PM2_5Button);
+    WidgetSwitchShow(PM2_5Button);
 }
 
 void ShowMainWindow::on_tempe_Button_clicked()
 {
     //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
    ButtonSetChecked(tempeButton);
+   WidgetSwitchShow(tempeButton);
 }
 
 void ShowMainWindow::on_humidity_Button_clicked()
 {
    //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
     ButtonSetChecked(humidityButton);
+    WidgetSwitchShow(humidityButton);
 }
 
 void ShowMainWindow::on_wind_Button_clicked()
 {
    //pushbutton按下后取消其他按键阴影，只保留当前pushbutton阴影
     ButtonSetChecked(windButton);
+    WidgetSwitchShow(windButton);
 }
 
 void ShowMainWindow::on_light_Button_clicked()
@@ -420,7 +427,20 @@ void ShowMainWindow::on_light_Button_clicked()
 
 void ShowMainWindow::on_lightSwitch_Button_clicked()
 {
-    qDebug() << "in lightSwitch";
+    if(lightFlag)
+    {
+         pixmap->load(":/images/images/light/light_off.png");
+         lightSwitch_Label->setPixmap(*pixmap);
+         lightSwitch_Button->setIcon(QIcon(":/images/images/light/switch_off.png"));
+         lightFlag = false;
+    }
+    else
+    {
+        pixmap->load(":/images/images/light/light_on.png");
+        lightSwitch_Label->setPixmap(*pixmap);
+        lightSwitch_Button->setIcon(QIcon(":/images/images/light/switch_on.png"));
+        lightFlag = true;
+    }
 }
 
 /**
@@ -435,6 +455,7 @@ void ShowMainWindow::ButtonSetCheckable()
     ui->wind_Button->QAbstractButton::setCheckable(true);
     ui->humidity_Button->QAbstractButton::setCheckable(true);
     ui->tempe_Button->QAbstractButton::setCheckable(true);
+    ui->light_Button->QAbstractButton::setCheckable(true);
 }
 
 /**
@@ -465,7 +486,7 @@ void ShowMainWindow::ButtonSetChecked(PushButtonSwitch_t pushButtonSwitch)
         ui->tempe_Button->QAbstractButton::setChecked(true);
         break;
     case lightButton:
-        ui->light_Button->QAbstractButton::setChecked(false);
+        ui->light_Button->QAbstractButton::setChecked(true);
         break;
     default:
         break;
@@ -484,8 +505,20 @@ void ShowMainWindow::WidgetInit()
     lightSwitch_Button = new QPushButton(this);
     lightSwitch_Label = new QLabel(this);
 
-    lightSwitch_Button->setGeometry(300, 230, 75, 30);
-    lightSwitch_Label->setGeometry(230, 220, 55, 40);
+    pixmap = new QPixmap();
+   // pixmap->scaled(lightSwitch_Label->size(),Qt::KeepAspectRatio);
+
+    //打开label的pixmap充满整个Label的使能
+    lightSwitch_Label->setScaledContents(true);
+
+    lightSwitch_Button->setGeometry(300, 230, 75, 45);
+    lightSwitch_Label->setGeometry(230, 230, 55, 55);
+
+    //这里需要向灯光发送查询指令，查询开关状态
+    pixmap->load(tr(":/images/images/light/%1").arg("light_off"));
+    lightSwitch_Label->setPixmap(*pixmap);
+    lightSwitch_Button->setIcon(QIcon(QPixmap(tr(":/images/images/light/%1").arg("switch_off"))));
+    lightFlag = false;
 
     lightSwitch_Button->close();
     lightSwitch_Label->close();

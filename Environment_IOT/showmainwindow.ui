@@ -155,6 +155,12 @@
          <height>111</height>
         </size>
        </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
        <property name="flat">
         <bool>true</bool>
        </property>
@@ -176,6 +182,12 @@
          <width>201</width>
          <height>111</height>
         </size>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
        </property>
        <property name="flat">
         <bool>true</bool>
