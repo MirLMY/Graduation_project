@@ -91,21 +91,53 @@ void ShowMainWindow::mysqlAction()
     qDebug()<<"mysqlAction";
 }
 
+/*
+    head    cmd     ip      info    checksum
+    1bit    1bit    1bit    nbit    2bit
+*/
+
 //串口接收的串口数据
 void ShowMainWindow::recv_serialport()
 {
-    QByteArray comBuffer = comform->my_serialport->readAll();//接收串口的内容
-    int comBuffer_len = comBuffer.length();//记录接收数据长度
+    QByteArray comBuffer, praseIp, praseInfo;
+    int comBuffer_len = 0;
+    quint16 checkSum = 0;
+    comBuffer.clear();
+    praseInfo.clear();
+    praseIp.clear();
 
-    quint16 checkSum = ((comBuffer[comBuffer_len-2])<<8) | (comBuffer[comBuffer_len-1]);//提取接收数据后2位的校验位
+    comBuffer = comform->my_serialport->readAll();//接收串口的内容
+    comBuffer_len = comBuffer.length();//记录接收数据长度
+    praseIp = comBuffer.mid(2,1);
+    praseInfo = comBuffer.mid(3,comBuffer_len - 3 - 2);//减去ip,cmd,head,checksum
+
+    checkSum = ((comBuffer[comBuffer_len-2])<<8) | (comBuffer[comBuffer_len-1]);//提取接收数据后2位的校验位
 
     //校验位检测
-    qDebug() << "checksum is "<<QByteArray::number(checkSum,16);
-    qDebug() << QByteArray::number(qChecksum(comBuffer, comBuffer_len-2),16);
-    if(qChecksum(comBuffer, comBuffer_len-2) == checkSum)
+//    qDebug() << "checksum is "<<QByteArray::number(checkSum,16);
+//    qDebug() << QByteArray::number(qChecksum(comBuffer, comBuffer_len-2),16);
+    if(/*qChecksum(comBuffer, comBuffer_len-2) == checkSum*/1)
     {
-        //protocolAnalysis解析出cmd，head,cmd,info
-        prase_cmd_package(comBuffer);
+        if(comBuffer[0] == HEAD)
+        {
+            if(comBuffer[1] == CMD_GET_INFO)
+            {
+                qDebug() << praseInfo.toHex();
+                switchIntofuction(praseIp, praseInfo);
+            }
+            else if(comBuffer[1] == CMD_PERIOD_INFO)
+            {
+
+            }
+            else
+            {
+                qDebug() << "cmd 为其他命令";
+            }
+        }
+        else
+        {
+            qDebug() << "包头不正确";
+        }
 
     }
     else
@@ -427,20 +459,7 @@ void ShowMainWindow::on_light_Button_clicked()
 
 void ShowMainWindow::on_lightSwitch_Button_clicked()
 {
-    if(lightFlag)
-    {
-         pixmap->load(":/images/images/light/light_off.png");
-         lightSwitch_Label->setPixmap(*pixmap);
-         lightSwitch_Button->setIcon(QIcon(":/images/images/light/switch_off.png"));
-         lightFlag = false;
-    }
-    else
-    {
-        pixmap->load(":/images/images/light/light_on.png");
-        lightSwitch_Label->setPixmap(*pixmap);
-        lightSwitch_Button->setIcon(QIcon(":/images/images/light/switch_on.png"));
-        lightFlag = true;
-    }
+   //向灯光设备发送一条开关灯命令
 }
 
 /**
@@ -557,5 +576,41 @@ void ShowMainWindow::WidgetSwitchShow(PushButtonSwitch_t pushButtonSwitch)
         break;
     default:
         break;
+    }
+}
+
+/**
+ *brief 通过ip来选择进入一个函数
+ *param 传入这是那个设备发过来的消息IP，和传过来什么消息
+ *return
+ *note
+ */
+void ShowMainWindow::switchIntofuction(QByteArray praseIp, QByteArray praseInfo)
+{
+    switch (praseIp[0]) {
+    case IP_LIGHT:
+        alterTheLightSwitch(praseInfo[0]);
+        break;
+    }
+}
+
+void ShowMainWindow::alterTheLightSwitch(int flag)
+{
+    if(flag == 0x00)
+    {
+         pixmap->load(":/images/images/light/light_off.png");
+         lightSwitch_Label->setPixmap(*pixmap);
+         lightSwitch_Button->setIcon(QIcon(":/images/images/light/switch_off.png"));
+    }
+    else if(flag = 0x01)
+    {
+
+        pixmap->load(":/images/images/light/light_on.png");
+        lightSwitch_Label->setPixmap(*pixmap);
+        lightSwitch_Button->setIcon(QIcon(":/images/images/light/switch_on.png"));
+    }
+    else
+    {
+        qDebug() << "light flag 出错！！";
     }
 }

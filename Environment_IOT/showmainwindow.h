@@ -52,6 +52,8 @@ typedef enum{
     lightButton,
 }PushButtonSwitch_t;
 
+
+
 namespace Ui {
 class ShowMainWindow;
 }
@@ -94,11 +96,8 @@ private slots:
     void serialPortAction();
     void mysqlAction();
     void recv_serialport();
-    void prase_cmd_package(QByteArray);
-    void prase_period_info_package(quint8, quint8*, int);
-    void prase_get_info_package(quint8, quint8*, int);
-    QString prase_info_to_string(quint8*, int);
 
+    void switchIntofuction(QByteArray, QByteArray);
 
     QRectF textRectF(double radius, int pointSize, double angle);
     void paintEvent(QPaintEvent *event);
@@ -111,6 +110,8 @@ private slots:
     void on_wind_Button_clicked();
 
     void on_lightSwitch_Button_clicked();
+
+    void alterTheLightSwitch(int flag);
 
     void ButtonSetCheckable();
     void ButtonSetChecked(PushButtonSwitch_t );

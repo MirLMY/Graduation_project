@@ -14,6 +14,7 @@
 #define IP_INFRARED_BODY    0x08//人体红外
 #define IP_PM2_5            0x09
 #define IP_FIRE             0x0a
+#define IP_LIGHT            0x0b
 
 #define BAUD_2400   0
 #define BAUD_4800   1
