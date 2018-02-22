@@ -114,9 +114,7 @@ void ShowMainWindow::recv_serialport()
     checkSum = ((comBuffer[comBuffer_len-2])<<8) | (comBuffer[comBuffer_len-1]);//提取接收数据后2位的校验位
 
     //校验位检测
-//    qDebug() << "checksum is "<<QByteArray::number(checkSum,16);
-//    qDebug() << QByteArray::number(qChecksum(comBuffer, comBuffer_len-2),16);
-    if(/*qChecksum(comBuffer, comBuffer_len-2) == checkSum*/1)
+    if(qChecksum(comBuffer, comBuffer_len-2) == checkSum)
     {
         if(comBuffer[0] == HEAD)
         {
@@ -146,102 +144,7 @@ void ShowMainWindow::recv_serialport()
     }
 }
 
-//解析CMD然后根据CMD 进入不同的prase函数
-void ShowMainWindow::prase_cmd_package(QByteArray protocol)
-{
-    qDebug() << "in cmd package";
-    //传过来的Buffer包含了校验位，在PtrotocolAnalysis类中没有去剔除校验位
-    protocolAnalysis = new ProtocolAnalysis(protocol, protocol.length()-2);
 
-    if(protocolAnalysis->bufferToHead() == HEAD)
-    {
-        switch (protocolAnalysis->bufferToCmd()) {
-        case CMD_PERIOD_INFO:
-            prase_period_info_package(protocolAnalysis->bufferToIp(), protocolAnalysis->bufferToInfo(), protocolAnalysis->infoLen);
-            break;
-        case CMD_GET_INFO:
-            prase_get_info_package(protocolAnalysis->bufferToIp(), protocolAnalysis->bufferToInfo(), protocolAnalysis->infoLen);
-            break;
-        default:
-            qDebug() << "other cmd";
-        }
-    }
-    else
-    {
-        qDebug() << "head 错误！";
-    }
-
-    delete protocolAnalysis;
-    protocolAnalysis = NULL;
-}
-
-//周期性回传数据
-void ShowMainWindow::prase_period_info_package(quint8 ip, quint8 *info, int infoLen)
-{
-    QSqlQuery query;
-    switch (ip) {
-    case IP_WIND:
-
-        break;
-    case IP_THERMOMETER:
-
-        break;
-    case IP_HYGROMETER:
-
-        break;
-    case IP_INFRARED_BODY:
-
-        break;
-    case IP_PM2_5:
-
-        break;
-    case IP_FIRE:
-
-        break;
-    default:
-        break;
-    }
-
-}
-
-QString ShowMainWindow::prase_info_to_string(quint8* info, int infoLen)
-{
-    quint16 sum = 0;
-    for(int i = 0;i < infoLen; i++)
-    {
-       sum += info[i];
-    }
-
-
-}
-
-//下发查询指令回传数据
-void ShowMainWindow::prase_get_info_package(quint8 ip,quint8 *info, int infoLen)
-{
-    QSqlQuery query;
-    switch (ip) {
-    case IP_WIND:
-
-        break;
-    case IP_THERMOMETER:
-
-        break;
-    case IP_HYGROMETER:
-
-        break;
-    case IP_INFRARED_BODY:
-
-        break;
-    case IP_PM2_5:
-
-        break;
-    case IP_FIRE:
-
-        break;
-    default:
-        break;
-    }
-}
 
 QRectF ShowMainWindow::textRectF(double radius, int pointSize, double angle)
 {
